@@ -1,24 +1,3 @@
-/////////////////////////////////////////////////////////////////////////////////////////////	
-//
-// Instituto Tecnologico de Buenos Aires						29/05/2017
-//
-// Algoritmos y Estructuras de Datos - Trabajo Práctico 8
-//
-//
-// Alvarez, Lisandro						 ////////////////////////////////////////////////
-// Bualo, Santiago							//	  Descompresor de imágenes - Metodo Quad Tree
-// Navarro, Paulo						   //////////////////////////////////////////////////
-//
-// Descompresor:
-//
-// El programa recibe por linea de comando un path como parametro. 
-// El usuario, a traves de un Board en el cual se listaran los archivos ".eda" cotenidos
-// en el directorio ingresado, sleccionara las imagenes que desea descomprimir.
-// Las imagenes comprimidas se amacenaran en un archivo de extension ".png" en el mismo
-// directorio en que se encuentra el archivo ".eda" .Al finalizar la descompresion el
-// programa se cerrara automaticamente.
-/////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "QuadTree.h"
 #include <cmath>
 #include <boost/algorithm/string/replace.hpp>
