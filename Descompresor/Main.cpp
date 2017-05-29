@@ -117,11 +117,26 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 	} while (ev.keyboard.keycode != ALLEGRO_KEY_ENTER);
+
 	//Si llego aca es pq aprete enter
 	selectedImgs = tileBoard.selectedTilesFiles();	//Todos los nombres de los archivos seleccionados
 	QuadTree compress;
+	ALLEGRO_FONT *font, *font2;
+	ALLEGRO_BITMAP *icon = NULL;
+	font = al_load_ttf_font(FONT_PATH, 50, 0);
+	font2 = al_load_ttf_font(FONT_PATH, 20, 0);
 	for (unsigned int i = 0; i < selectedImgs.size(); i++)
 	{
+		icon = al_load_bitmap(ICON_PATH);
+		std::string aux = selectedImgs[i].substr(selectedImgs[i].find_last_of("\\") + 1);
+		aux = "Descomprimiendo archivo " + std::to_string(i + 1) + " de " + std::to_string(selectedImgs.size());
+		al_clear_to_color(al_map_rgb(255, 255, 255));
+		al_draw_text(font, al_map_rgb(0, 0, 0), 500, 50, ALLEGRO_ALIGN_CENTRE, aux.c_str());
+		al_draw_scaled_bitmap(icon, 0, 0, al_get_bitmap_width(icon), al_get_bitmap_height(icon), 350, 200, 300, 200, 0);
+		al_draw_rectangle(350, 400, 650, 200, al_map_rgb(0, 0, 0), 1);
+		aux = selectedImgs[i].substr(selectedImgs[i].find_last_of("\\") + 1);
+		al_draw_text(font2, al_map_rgb(0, 0, 0), 500, 400, ALLEGRO_ALIGN_CENTRE, aux.c_str());
+		al_flip_display();
 		compress.QTDecompress(selectedImgs[i]);
 	}
 }
